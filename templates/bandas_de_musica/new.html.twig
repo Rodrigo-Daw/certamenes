@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BandasDeMusica{% endblock %}
+
+{% block body %}
+    <h1>Create new BandasDeMusica</h1>
+
+    {{ include('bandas_de_musica/_form.html.twig') }}
+
+    <a href="{{ path('app_bandas_de_musica_index') }}">back to list</a>
+{% endblock %}

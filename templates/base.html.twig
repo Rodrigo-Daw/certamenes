@@ -1,0 +1,17 @@
+{# templates/base.html.twig #}
+<ul>
+        <li><a href="{{path("public_test")}}">Publica</a></li>
+        {# Usuario autentificado permitimos acceso zona privada y logout#}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="{{path("private_test")}}">Privada</a></li>
+            <li><a href="{{path("app_logout")}}">Logout</a></li>
+        {% else %}
+            {# Usuario no autentificado permitimos registro y login#}
+            <li><a href="{{path("app_register")}}">Registro</a></li>
+            <li><a href="{{path("app_login")}}">Login</a></li>
+        {% endif %}
+        
+</ul>
+{% block body %}
+
+{% endblock %}

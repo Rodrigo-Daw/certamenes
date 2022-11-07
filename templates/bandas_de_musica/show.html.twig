@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BandasDeMusica{% endblock %}
+
+{% block body %}
+    <h1>BandasDeMusica</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bandas_de_musica.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ bandas_de_musica.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Numero_de_musicos</th>
+                <td>{{ bandas_de_musica.numeroDeMusicos }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_del_director</th>
+                <td>{{ bandas_de_musica.nombreDelDirector }}</td>
+            </tr>
+            <tr>
+                <th>Pueblo</th>
+                <td>{{ bandas_de_musica.pueblo }}</td>
+            </tr>
+            <tr>
+                <th>Provincia</th>
+                <td>{{ bandas_de_musica.provincia }}</td>
+            </tr>
+            <tr>
+                <th>Codigo_postal</th>
+                <td>{{ bandas_de_musica.codigoPostal }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ bandas_de_musica.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Correo_electronico</th>
+                <td>{{ bandas_de_musica.correoElectronico }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bandas_de_musica_index') }}">back to list</a>
+
+    <a href="{{ path('app_bandas_de_musica_edit', {'id': bandas_de_musica.id}) }}">edit</a>
+
+    {{ include('bandas_de_musica/_delete_form.html.twig') }}
+{% endblock %}
