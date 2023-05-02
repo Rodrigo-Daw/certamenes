@@ -1,0 +1,25 @@
+<h2>Datos personales de la banda de música</h2>
+
+<table>
+    <tr>
+        <th>Nombre de la banda</th>
+        <th>Nombre del director</th>
+        <th>Número de músicos</th>
+        <th>Localidad</th>
+        <th>Provincia</th>
+        <th>Código Postal</th>
+        <th>Teléfono</th>
+        <th>Correo electrónico</th>
+        <th>Certamen</th>
+    </tr>
+    <tr *ngFor="let dato of getIdentificacion()">
+        <td>{{dato.nombre_banda}}</td>
+        <td>{{dato.nombre_director}}</td> 
+        <td>{{dato.numero_musicos}}</td>
+        <td>{{dato.localidad}}</td> 
+        <td>{{dato.provincia}}</td> 
+        <td>{{dato.codigo_postal}}</td>
+        <td>{{dato.telefono}}</td>
+        <td>{{dato.correo_electronico}}</td>
+    </tr>
+</table>
