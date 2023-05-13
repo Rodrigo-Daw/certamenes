@@ -1,0 +1,18 @@
+<html>
+
+<h2>Lista de los próximos certámenes a celebrar</h2>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Lugar</th>
+    </tr>
+    <tr *ngFor="let certamen of getCertamenes()">
+        <td>{{certamen.nombre_certamen}}</td>
+        <td>{{certamen.fecha}}</td> 
+        <td>{{certamen.lugar}}</td> 
+    </tr>
+</table>
+
+</html>
