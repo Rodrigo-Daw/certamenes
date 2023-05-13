@@ -1,0 +1,66 @@
+<html>
+
+<h2>Datos a introducir para el registro</h2>
+
+<form>
+
+    <div class="form-group">
+        <label for="nombre_banda" class="control-label">Nombre completo de la banda</label>
+        <input type="text" class="form-control" id="nombre_banda" name="nombre_banda" placeholder="{{banda.nombre_banda}}"
+            [(ngModel)]="banda.nombre_banda" [ngClass]="{'claseEspecial':nombre_bandaOK==false}" (click)="nombreBandaCorregido()">
+        <label *ngIf="nombre_bandaOK==false">Este campo es obligatorio</label>
+    </div>    
+
+    <div class="form-group">
+        <label for="nombre_director" class="control-label">Nombre y apellidos del director</label>
+        <input type="text" class="form-control" id="nombre_director" name="nombre_director" placeholder="Nombre del director"
+            [(ngModel)]="banda.nombre_director" [ngClass]="{'claseEspecial':nombre_directorOK==false}" (click)="nombreDirectorCorregido()">
+        <label *ngIf="nombre_directorOK==false">Este campo es obligatorio</label>
+    </div>                    
+                            
+    <div class="form-group">
+        <label for="numero_musicos" class="control-label">Número de músicos que componen la banda</label>
+        <input type="text" class="form-control" id="numero_musicos" name="numero_musicos" placeholder="Cantidad de músicos"
+            [(ngModel)]="banda.numero_musicos" [ngClass]="{'claseEspecial':numero_musicosOK==false}" (click)="numeroMusicosCorregido()">
+        <label *ngIf="numero_musicosOK==false">Este campo es obligatorio</label>
+    </div>  
+
+    <div class="form-group">
+        <label for="localidad" class="control-label">Localidad a la que pertenece la banda</label>
+        <input type="text" class="form-control" id="localidad" name="localidad" placeholder="Localidad"
+            [(ngModel)]="banda.localidad" [ngClass]="{'claseEspecial':localidadOK==false}" (click)="localidadCorregida()">
+        <label *ngIf="localidadOK==false">Este campo es obligatorio</label>
+    </div> 
+    
+    <div class="form-group">
+        <label for="provincia" class="control-label">Provincia de la banda</label>
+        <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Provincia"
+            [(ngModel)]="banda.provincia" [ngClass]="{'claseEspecial':provinciaOK==false}" (click)="provinciaCorregida()">
+        <label *ngIf="provinciaOK==false">Este campo es obligatorio</label>
+    </div> 
+
+    <div class="form-group">
+        <label for="codigo_postal" class="control-label">Código Postal de la banda</label>
+        <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" placeholder="Código postal"
+            [(ngModel)]="banda.codigo_postal" [ngClass]="{'claseEspecial':codigo_postalOK==false}" (click)="codigoPostalCorregido()">
+        <label *ngIf="codigo_postalOK==false">Este campo es obligatorio</label>
+    </div> 
+
+    <div class="form-group">
+        <label for="telefono" class="control-label">Teléfono de contacto</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono"
+            [(ngModel)]="banda.telefono" [ngClass]="{'claseEspecial':telefonoOK==false}" (click)="telefonoCorregido()">
+        <label *ngIf="telefonoOK==false">Este campo es obligatorio</label>
+    </div> 
+
+    <div class="form-group">
+        <label for="correo_electronico" class="control-label">Correo electrónico de contacto</label>
+        <input type="text" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="Correo electrónico"
+            [(ngModel)]="banda.correo_electronico" [ngClass]="{'claseEspecial':correoOK==false}" (click)="correoCorregido()">
+        <label *ngIf="correoOK==false">Este campo es obligatorio</label>
+    </div>
+    
+    <button type="button" class="btn btn-success" (click)="rellenar()">Guardar</button>
+</form>
+
+</html>
