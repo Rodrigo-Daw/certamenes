@@ -1,0 +1,21 @@
+<html>
+
+<h2>Lista de las bandas participantes</h2>
+
+<table>
+    <tr>
+        <th>Nombre de la banda</th>
+        <th>Nombre del certamen</th>
+        <th>Calificación</th>
+        <th>Acción</th>
+    </tr>
+    <tr *ngFor="let banda of bandas">
+        <td>{{banda.nombre_banda}}</td>
+        <td>{{banda.nombre_certamen}}</td> 
+        <td><input id="calificacion" type="number" min="0" max="10" step="0.1" [(ngModel)]="bandas.nota"
+            [ngClass]="{'claseEspecial':notaOK==false}" (click)="notaCorregida()"></td>
+        <td><button (click)="rellenar()">Calificar</button></td> 
+    </tr>
+</table>
+
+</html>
