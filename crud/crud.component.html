@@ -1,0 +1,33 @@
+<html>
+
+<h2>Datos personales de la banda de música</h2>
+
+<table>
+    <tr>
+        <th>Nombre de la banda</th>
+        <th>Nombre del director</th>
+        <th>Número de músicos</th>
+        <th>Localidad</th>
+        <th>Provincia</th>
+        <th>Código Postal</th>
+        <th>Teléfono</th>
+        <th>Correo electrónico</th>
+        <th>Acciones</th>
+    </tr>
+    <tr>
+        <td>{{banda.nombre_banda}}</td>
+        <td>{{banda.nombre_director}}</td> 
+        <td>{{banda.numero_musicos}}</td>
+        <td>{{banda.localidad}}</td> 
+        <td>{{banda.provincia}}</td> 
+        <td>{{banda.codigo_postal}}</td>
+        <td>{{banda.telefono}}</td>
+        <td>{{banda.correo_electronico}}</td>
+        <td><button type="button" class="btn btn-success" [routerLink]="['/editar', banda.id]">Editar datos</button> <button type="button" class="btn btn-danger" (click)="eliminarBanda(banda)">Eliminar banda</button><button type="button" class="btn btn-warning" [routerLink]="['/inscribirse', banda.id]">Inscribirse a certamen</button></td>
+    </tr>
+</table>
+<br>
+<br>
+<a routerLink="/login">Salir</a>
+
+</html>

@@ -1,0 +1,30 @@
+html{
+    background-color: #DBF9FC;
+}
+
+h2{
+
+    padding: 4%
+}
+
+table{
+    border: solid black 1px;
+    margin-left: 5%;
+    text-align: center;
+}
+
+tr{
+    border: solid black 1px;
+}
+
+th{
+    border: solid black 1px;
+}
+
+td{
+    border: solid black 1px;
+}
+
+a{
+    padding: 4%
+}
