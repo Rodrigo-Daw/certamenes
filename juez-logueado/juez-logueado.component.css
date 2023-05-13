@@ -1,0 +1,12 @@
+html{
+    background-color: #DBF9FC;
+}
+
+#contenedor{
+    text-align: center;
+    top: 50%
+}
+
+button{
+    margin: 8%
+}
