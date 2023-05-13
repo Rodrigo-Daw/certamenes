@@ -1,0 +1,19 @@
+html{
+    background-color: #DBF9FC;
+}
+
+h2{
+    padding: 4%
+}
+
+form{
+    margin: 5%
+}
+
+div{
+    margin-bottom: 3%;
+}
+
+.claseEspecial{
+    background-color: red
+}
