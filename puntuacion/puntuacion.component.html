@@ -1,0 +1,16 @@
+<html>
+
+<h2>Clasificación</h2>
+
+<table>
+    <tr>
+        <th>Nombre de la banda</th>
+        <th>Puntuación</th>
+    </tr>
+    <tr *ngFor="let nota of notas">
+        <td>{{nota.nombre_banda}}</td>
+        <td>{{nota.nota}}</td>
+    </tr>
+</table>
+
+</html>
