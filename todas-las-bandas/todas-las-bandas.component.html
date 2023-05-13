@@ -1,0 +1,22 @@
+<html>
+
+<h2>Lista de todas las bandas</h2>
+
+<table>
+    <tr>
+        <th>Nombre de la banda</th>
+        <th>Nombre del director</th>
+        <th>Número de músicos</th>
+        <th>Localidad</th>
+        <th>Provincia</th>
+    </tr>
+    <tr *ngFor="let banda of getBandas()">
+        <td>{{banda.nombre_banda}}</td>
+        <td>{{banda.nombre_director}}</td> 
+        <td>{{banda.numero_musicos}}</td>
+        <td>{{banda.localidad}}</td> 
+        <td>{{banda.provincia}}</td> 
+    </tr>
+</table>
+
+</html>
