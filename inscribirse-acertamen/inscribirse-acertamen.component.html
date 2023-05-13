@@ -1,0 +1,17 @@
+<html>
+
+<h2>Inscripción a certamen</h2>
+
+<form>
+    <div class="form-group">
+        <label for="certamenes">Próximos certámenes a celebrar</label>
+        <select class="form-control" id="certamenes" [ngModelOptions]="{ standalone: true }" [(ngModel)]="certamen">
+            <option value="0">Elija un certamen</option>
+            <option *ngFor="let certamen of getCertamenes()" value="{{certamen.id}}">{{certamen.nombre_certamen}}</option>
+        </select>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="inscribirse(certamen)">Inscribirse</button>
+</form>
+
+</html>
