@@ -1,5 +1,8 @@
 html{
-    background-color: #DBF9FC;
+    background-image: url('../../imagenes/todas-las-bandas.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 #contenedor{
