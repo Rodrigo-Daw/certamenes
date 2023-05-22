@@ -9,7 +9,7 @@ export class TodasLasBandasService {
   nombre_banda:any
   nombre_director:any
   localidad:any
-  provincia:any
+  pais:any
 
   ruta = "http://localhost/certamenes/certamenes.php?opcion=soloBandas"
 
@@ -18,7 +18,7 @@ export class TodasLasBandasService {
       this.nombre_banda = datos
       this.nombre_director = datos
       this.localidad = datos
-      this.provincia = datos
+      this.pais = datos
     })
   }
 
