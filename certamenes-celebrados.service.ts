@@ -34,6 +34,6 @@ export class CertamenesCelebradosService {
   }
 
   puntuarBanda(id: string, nota: number){
-    return this.http.put(this.ruta+'?opcion=listarPorCertamen&id='+id, nota)
+    return this.http.put(this.ruta+'?opcion=listarPorCertamen&id='+id, JSON.stringify(nota))
   }
 }

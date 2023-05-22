@@ -33,7 +33,7 @@
     </div> 
     
     <div class="form-group">
-        <label for="provincia" class="control-label">Provincia de la banda</label>
+        <label for="provincia" class="control-label">Provincia de origen de la banda</label>
         <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Provincia"
             [(ngModel)]="banda.provincia" [ngClass]="{'claseEspecial':provinciaOK==false}" (click)="provinciaCorregida()">
         <label *ngIf="provinciaOK==false">Este campo es obligatorio</label>

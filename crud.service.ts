@@ -15,7 +15,7 @@ export class CrudService {
   nombre_director:any
   numero_musicos:any
   localidad:any
-  provincia:any
+  pais:any
   codigo_postal:any
   telefono:any
   correo_electronico:any
@@ -30,7 +30,7 @@ export class CrudService {
       this.nombre_director = datos
       this.numero_musicos = datos
       this.localidad = datos
-      this.provincia = datos
+      this.pais = datos
       this.codigo_postal = datos
       this.telefono = datos
       this.correo_electronico = datos
@@ -45,7 +45,7 @@ export class CrudService {
       this.nombre_director = datos
       this.numero_musicos = datos
       this.localidad = datos
-      this.provincia = datos
+      this.pais = datos
       this.codigo_postal = datos
       this.telefono = datos
       this.correo_electronico = datos
