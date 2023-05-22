@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 export class ListarPorCertamenComponent {
 
   id:any; 
-  id_banda:any
+  banda_select:any
   bandas:any
   nota:any
   notaOK = true
@@ -21,39 +21,34 @@ export class ListarPorCertamenComponent {
   constructor(private certamenService: CertamenesCelebradosService, private route: ActivatedRoute, 
     private snackBar: MatSnackBar, private router: Router) { 
     this.route.params.subscribe(data => {
-      this.id = data['id'];
+      this.id = data['id']; 
     })
 
-    if (this.id){
+   if (this.id){ 
       this.certamenService.getNota(this.id).subscribe((res:BandaPorCertamen) => {
         this.bandas = res
       })
-    }
+    } 
 
   }
 
-  calificar(){
-    this.route.params.subscribe(data => {
-      this.id_banda = data['banda_id']
-    }) 
-    console.log(this.id_banda)
-    if (this.id_banda){
-      this.nota = this.certamenService.puntuarBanda(this.id_banda, this.bandas.nota).subscribe((res: any) => {
-        this.bandas.nota = res
-      })
-    }
-    return this.nota
+  calificar(banda:any){
+    
+    console.log(banda.banda_id)
+    return this.certamenService.puntuarBanda(banda.banda_id, banda.nota).subscribe((res: any) => {
+        this.bandas = res
+    })
   }
 
-  rellenar(){
-    if(!this.bandas.nota){
+  rellenar(banda:any){
+    if(!banda.nota){
       this.notaOK = false
       this.snackBar.open("Falta la nota de la banda", "", {
         duration: 1500,
         horizontalPosition: "center",
         verticalPosition: "top",
       });
-    }else if(this.bandas.nota>10|| this.bandas.nota<0){
+    }else if(banda.nota>10 || banda.nota<0){
       this.notaOK = false
       this.snackBar.open("La nota debe estar entre 0 y 10", "", {
         duration: 1500,
@@ -61,13 +56,12 @@ export class ListarPorCertamenComponent {
         verticalPosition: "top",
       });
     }else{
-      this.calificar()
+      this.calificar(banda)
       this.snackBar.open("Banda puntuada correctamente", "", {
         duration: 1500,
         horizontalPosition: "center",
         verticalPosition: "top",
       });
-      this.router.navigate(['/puntuarBanda'])
     }
   }
 
