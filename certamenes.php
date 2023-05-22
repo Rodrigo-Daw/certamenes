@@ -224,13 +224,14 @@ function getNota($connection, $id){
     $listado = array();
     $sql = "SELECT * FROM bandasdemusica INNER JOIN banda_cert_celebrado ON bandasdemusica.id=banda_cert_celebrado.banda_id 
         INNER JOIN certamenes_celebrados ON banda_cert_celebrado.certamen_id=certamenes_celebrados.id 
-        WHERE certamenes_celebrados.id = ? ORDER BY nota";
+        WHERE certamenes_celebrados.id = ? ORDER BY nota DESC";
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(1, $id, PDO::PARAM_INT);
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_NAMED)){
             $certamen = new Nota();
             $certamen->id_ambos = $row['id_ambos'];
+            $certamen->banda_id = $row['banda_id'];
             $certamen->nombre_banda = $row['nombre_banda'];
             $certamen->nombre_certamen = $row['nombre_certamen'];
             $certamen->nota = $row['nota'];
@@ -268,7 +269,7 @@ function editarBanda($connection, $id, $bandaeditada){
 
 function puntuarBanda($connection, $id, $nota){
 
-    $sql = "UPDATE banda_cert_celebrado SET nota=? WHERE id=?";
+    $sql = "UPDATE banda_cert_celebrado SET nota=? WHERE banda_id=?";
     $stmt = $connection->prepare($sql);
 
     $stmt->bindParam(2,$id, PDO::PARAM_INT);
@@ -283,6 +284,11 @@ function puntuarBanda($connection, $id, $nota){
 
 function eliminarBanda($connection, $id){
     
+    $sentencia = "DELETE FROM banda_certamen WHERE banda_id = ?";
+    $stmt = $connection->prepare($sentencia);
+    $stmt->bindParam(1,$id, PDO::PARAM_INT);
+    $resultado = $stmt->execute();
+
     $sentencia = "DELETE FROM bandasdemusica WHERE id = ?";
     $stmt = $connection->prepare($sentencia);
     $stmt->bindParam(1,$id, PDO::PARAM_INT);
@@ -349,6 +355,7 @@ if(isset($_GET['opcion'])){
     else if($_GET['opcion'] == 'listarPorCertamen' && isset($_GET['id'])){
 
         $id = $_GET['id'];
+
         $nota = json_decode(file_get_contents("php://input"));
 
         echo json_encode( puntuarBanda($conexion, $id, $nota), JSON_UNESCAPED_UNICODE );
