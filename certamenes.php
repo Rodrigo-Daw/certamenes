@@ -1,32 +1,43 @@
 <?php
-
-$server = "mysql:dbname=certamenes";
-$user = 'root';
-$pw = '';
-$conexion = new PDO($server,$user,$pw,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
-
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 
+$server = "mysql:dbname=certamenes";
+$user = 'root';
+$password = '';
+
+
+
+/* $server = "musicaglobal.es";
+$database = "u892739063_certamenes";
+$user = "u892739063_rodrigo";
+$password = "Guitarra1!"; */
+
+
+$conexion = new PDO($server, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+
+
 class Certamenes{}
 
-function listarCertamenes($connection){
+function listarCertamenes($connection) {
 
     $listado = array();
     $sql = "SELECT * FROM certamenesmusica ORDER BY fecha";
-    $query = $connection->prepare($sql);
-	$query->execute();
+    $result = $connection->prepare($sql);
+    $result->execute();
 
-    while ($row = $query->fetch(PDO::FETCH_NAMED)){
-		$certamen = new Certamenes();
-		$certamen->id = $row['id'];
-		$certamen->nombre_certamen = $row['nombre_certamen'];
-		$certamen->fecha = $row['fecha'];
-		$certamen->lugar = $row['lugar'];
+    while ($row = $result->fetch(PDO::FETCH_NAMED)) {
+        $certamen = new Certamenes();
+        $certamen->id = $row['id'];
+        $certamen->nombre_certamen = $row['nombre_certamen'];
+        $certamen->fecha = $row['fecha'];
+        $certamen->lugar = $row['lugar'];
+        $certamen->sitio = $row['sitio'];
 
-		$listado[] = $certamen;
-	}
+        $listado[] = $certamen;
+        
+    }
 
     return $listado;
 }
@@ -84,15 +95,16 @@ function listarSoloBandas($connection){
 
 class Bandas{}
 
-function listarBandas($connection){
+function listarBandas($connection, $id){
 
     $listado = array();
     $sql = "SELECT * FROM bandasdemusica INNER JOIN banda_certamen ON bandasdemusica.id=banda_certamen.banda_id
-                INNER JOIN certamenesmusica ON banda_certamen.certamen_id=certamenesmusica.id ORDER BY nombre_certamen";
-    $query = $connection->prepare($sql);
-	$query->execute();
+                INNER JOIN certamenesmusica ON banda_certamen.certamen_id=certamenesmusica.id WHERE certamen_id=? ORDER BY nombre_certamen";
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+    $stmt->execute();
 
-    while ($row = $query->fetch(PDO::FETCH_NAMED)){
+    while ($row = $stmt->fetch(PDO::FETCH_NAMED)){
 		$certamen = new Bandas();
 		$certamen->id = $row['id'];
 		$certamen->nombre_banda = $row['nombre_banda'];
@@ -127,9 +139,9 @@ function insertarBanda($connection, $jsonBanda){
 
 function insertarCertamen($connection, $jsonCertamen){
 
-    $sql = "INSERT INTO certamenesmusica (nombre_certamen, fecha, lugar) VALUES (?,?,?)";
+    $sql = "INSERT INTO certamenesmusica (nombre_certamen, fecha, lugar, sitio) VALUES (?,?,?,?)";
     $sentencia = $connection->prepare($sql);
-    $resultado = $sentencia->execute([$jsonCertamen->nombre_certamen, $jsonCertamen->fecha, $jsonCertamen->lugar]);
+    $resultado = $sentencia->execute([$jsonCertamen->nombre_certamen, $jsonCertamen->fecha, $jsonCertamen->lugar, $jsonCertamen->sitio]);
     
     echo json_encode([
         "resultado" => $resultado,
@@ -140,12 +152,11 @@ function insertarCertamen($connection, $jsonCertamen){
 function inscripcion($connection, $banda_id, $certamen_id){
 
     $sql = "INSERT INTO banda_certamen (banda_id, certamen_id, fecha, hora) VALUES (?,?,CURRENT_DATE(), CURTIME())";
-    $sentencia = $connection->prepare($sql);
-    $resultado = $sentencia->execute([$banda_id, $certamen_id]);
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(1, $banda_id, PDO::PARAM_INT);
+    $stmt->bindParam(2, $certamen_id, PDO::PARAM_INT);
+    $stmt->execute();
 
-    echo json_encode([
-        "resultado" => $resultado,
-    ]);
 }
 
 class Login{}
@@ -289,6 +300,11 @@ function eliminarBanda($connection, $id){
     $stmt->bindParam(1,$id, PDO::PARAM_INT);
     $resultado = $stmt->execute();
 
+    $sentencia = "DELETE FROM banda_cert_celebrado WHERE banda_id = ?";
+    $stmt = $connection->prepare($sentencia);
+    $stmt->bindParam(1,$id, PDO::PARAM_INT);
+    $resultado = $stmt->execute();
+
     $sentencia = "DELETE FROM bandasdemusica WHERE id = ?";
     $stmt = $connection->prepare($sentencia);
     $stmt->bindParam(1,$id, PDO::PARAM_INT);
@@ -311,8 +327,11 @@ if(isset($_GET['opcion'])){
     else if($_GET['opcion'] == 'soloBandas'){
         echo json_encode( listarSoloBandas($conexion), JSON_UNESCAPED_UNICODE );
     }
-    else if($_GET['opcion'] == 'bandas'){
-        echo json_encode( listarBandas($conexion), JSON_UNESCAPED_UNICODE );
+    else if($_GET['opcion'] == 'bandas' && isset($_GET['id'])){
+
+        $id = $_GET['id'];
+
+        echo json_encode( listarBandas($conexion, $id), JSON_UNESCAPED_UNICODE );
     }
     else if($_GET['opcion'] == 'registrar'){
 
