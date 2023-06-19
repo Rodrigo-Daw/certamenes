@@ -19,10 +19,17 @@
     </div>                    
                             
     <div class="form-group">
-        <label for="lugar" class="control-label">Lugar donde se celebrará el certamen</label>
-        <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar del certamen"
+        <label for="localidad" class="control-label">Localidad donde se celebrará el certamen</label>
+        <input type="text" class="form-control" id="localidad" name="localidad" placeholder="Localidad"
             [(ngModel)]="certamen.lugar" [ngClass]="{'claseEspecial':lugarOK==false}" (click)="lugarCorregido()">
         <label *ngIf="lugarOK==false">Este campo es obligatorio</label>
+    </div> 
+    
+    <div class="form-group">
+        <label for="lugar" class="control-label">Lugar donde se celebrará el certamen</label>
+        <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar del certamen"
+            [(ngModel)]="certamen.sitio" [ngClass]="{'claseEspecial':sitioOK==false}" (click)="sitioCorregido()">
+        <label *ngIf="sitioOK==false">Este campo es obligatorio</label>
     </div>  
     
     <button type="button" class="btn btn-success" (click)="rellenar()">Registrar</button>

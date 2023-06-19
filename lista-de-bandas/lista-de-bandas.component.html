@@ -1,23 +1,19 @@
 <html>
 
-<h2>Lista de las bandas inscritas a certámenes</h2>
+<h2>Lista de las bandas inscritas</h2>
 
-<table>
-    <tr>
-        <th>Nombre de la banda</th>
-        <th>Nombre del director</th>
-        <th>Número de músicos</th>
-        <th>Localidad</th>
-        <th>Provincia</th>
-        <th>Certamen</th>
-    </tr>
-    <tr *ngFor="let banda of getBandas()">
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th>Nombre de la banda</th>
+            <th>Localidad</th>
+            <th>Provincia</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let banda of bandas">
         <td>{{banda.nombre_banda}}</td>
-        <td>{{banda.nombre_director}}</td> 
-        <td>{{banda.numero_musicos}}</td>
         <td>{{banda.localidad}}</td> 
         <td>{{banda.provincia}}</td> 
-        <td>{{banda.nombre_certamen}}</td> 
     </tr>
 </table>
 

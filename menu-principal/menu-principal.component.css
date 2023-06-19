@@ -59,9 +59,16 @@ h1{
   }
 
 a {
-    color: #7AB730;
     text-decoration: none;
     background-color: transparent;
+}
+
+.black{
+  color: black;
+}
+
+.blue{
+  color: #007bff;
 }
   
 a:hover {

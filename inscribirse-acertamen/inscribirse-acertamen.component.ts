@@ -34,15 +34,12 @@ export class InscribirseACertamenComponent {
     }
     else if (this.id){
       this.certamenesServicio.inscribirse(this.id, certamen_id).subscribe((datos:any) => {
-        if (datos['resultado']=='OK') {
-          alert(datos['mensaje']);
           this.snackBar.open("Inscripción realizada correctamente", "", {
             duration: 1500,
             horizontalPosition: "center",
             verticalPosition: "top",
           });
           this.router.navigate(['/crud', this.id])
-        }
       })
     }
   }

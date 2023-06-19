@@ -2,13 +2,15 @@
 
 <h2>Lista de los certámenes ya celebrados</h2>
 
-<table>
-    <tr>
-        <th>Nombre</th>
-        <th>Fecha</th>
-        <th>Lugar</th>
-        <th>Puntuación</th>
-    </tr>
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Lugar</th>
+            <th scope="col">Puntuación</th>
+        </tr>
+    </thead>
     <tr *ngFor="let certamen of getCertamenes()">
         <td>{{certamen.nombre_certamen}}</td>
         <td>{{certamen.fecha}}</td> 

@@ -1,18 +1,14 @@
 html{
-    background-image: url('../../imagenes/bandas-inscritas.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-color: #DBF9FC;
     background-size: cover;
 }
 
 h2{
-
     padding: 4%
 }
 
 table{
     border: solid black 1px;
-    margin-left: 5%;
     text-align: center;
     background-color: aliceblue;
 }
@@ -26,5 +22,6 @@ th{
 }
 
 td{
+    color:black;
     border: solid black 1px;
 }

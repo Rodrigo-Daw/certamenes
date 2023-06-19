@@ -13,11 +13,12 @@ import { Router } from "@angular/router";
 export class NuevoCertamenComponent {
 
   fecha = new Date()
-  certamen = new NuevoCertamen("",this.fecha,"")
+  certamen = new NuevoCertamen("",this.fecha,"","")
 
   nombre_certamenOK = true
   fechaOK = true
   lugarOK = true
+  sitioOK = true
 
   constructor(private certamenService: NuevoCertamenService, private snackBar: MatSnackBar, private router: Router){}
 
@@ -48,6 +49,14 @@ export class NuevoCertamenComponent {
     }
     else if(!this.certamen.lugar){
       this.lugarOK = false
+      this.snackBar.open("Falta el campo 'localidad'", "", {
+        duration: 1500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+      });
+    }
+    else if(!this.certamen.sitio){
+      this.sitioOK = false
       this.snackBar.open("Falta el campo 'lugar'", "", {
         duration: 1500,
         horizontalPosition: "center",
@@ -75,6 +84,10 @@ export class NuevoCertamenComponent {
 
   lugarCorregido(){
     this.lugarOK = true
+  }
+
+  sitioCorregido(){
+    this.sitioOK = true
   }
 
 }
