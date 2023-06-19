@@ -2,15 +2,17 @@
 
 <h2>Puntuación</h2>
 
-<table>
-    <tr>
-        <th>Nombre de la banda</th>
-        <th>Puntuación</th>
-    </tr>
-    <tr *ngFor="let nota of notas">
-        <td>{{nota.nombre_banda}}</td>
-        <td>{{nota.nota}}</td>
-    </tr>
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nombre de la banda</th>
+            <th scope="col">Puntuación</th>
+        </tr>
+    </thead>
+        <tr *ngFor="let nota of notas">
+            <td>{{nota.nombre_banda}}</td>
+            <td>{{nota.nota}}</td>
+        </tr>
 </table>
 
 </html>

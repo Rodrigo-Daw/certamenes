@@ -21,7 +21,8 @@ export class CrudService {
   correo_electronico:any
   clave:any
 
-  ruta = "http://localhost/certamenes/certamenes.php"
+  ruta_local = "http://localhost/certamenes/certamenes.php"
+  ruta = "api/certamenes.php"
 
   constructor(private http: HttpClient) {
     this.http.get(this.ruta+'?opcion=soloBandas').subscribe((datos) => {

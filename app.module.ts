@@ -37,6 +37,8 @@ import { ClasificacionComponent } from './clasificacion/clasificacion.component'
 import { PuntuacionComponent } from './puntuacion/puntuacion.component';
 import { PuntuarBandaComponent } from './puntuar-banda/puntuar-banda.component';
 import { ListarPorCertamenComponent } from './listar-por-certamen/listar-por-certamen.component';
+import { PaginaBienvenidaComponent } from './pagina-bienvenida/pagina-bienvenida.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { ListarPorCertamenComponent } from './listar-por-certamen/listar-por-cer
     ClasificacionComponent,
     PuntuacionComponent,
     PuntuarBandaComponent,
-    ListarPorCertamenComponent
+    ListarPorCertamenComponent,
+    PaginaBienvenidaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

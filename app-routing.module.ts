@@ -17,10 +17,12 @@ import { ClasificacionComponent } from './clasificacion/clasificacion.component'
 import { PuntuacionComponent } from './puntuacion/puntuacion.component';
 import { PuntuarBandaComponent } from './puntuar-banda/puntuar-banda.component';
 import { ListarPorCertamenComponent } from './listar-por-certamen/listar-por-certamen.component';
+import { PaginaBienvenidaComponent } from './pagina-bienvenida/pagina-bienvenida.component';
 
 const routes: Routes = [
+  { path: '', component: PaginaBienvenidaComponent },
   { path:"proximosCertamenes", component: ProximosCertamenesComponent},
-  { path:"listaDeBandas", component: ListaDeBandasComponent},
+  { path:"listaDeBandas/:id", component: ListaDeBandasComponent},
   { path:"entrar", component: EntrarComponent},
   { path:"registrar", component: RegistroComponent},
   { path:"login", component: LoginComponent},

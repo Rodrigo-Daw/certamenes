@@ -14,7 +14,8 @@ export class CertamenesCelebradosService {
   nombre_banda:any
   notas:any
 
-  ruta = "http://localhost/certamenes/certamenes.php"
+  ruta_local = "http://localhost/certamenes/certamenes.php"
+  ruta = "api/certamenes.php"
 
   constructor(private http: HttpClient) {
     this.http.get(this.ruta+"?opcion=certamenesCelebrados").subscribe((datos) => {

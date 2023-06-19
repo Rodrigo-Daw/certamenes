@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProximosCertamenesService } from '../proximos-certamenes.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-proximos-certamenes',
@@ -9,9 +10,13 @@ import { ProximosCertamenesService } from '../proximos-certamenes.service';
 export class ProximosCertamenesComponent {
 
 
-  constructor(private certamenesServicio: ProximosCertamenesService){}
+  constructor(private certamenesServicio: ProximosCertamenesService, private router: Router){}
 
   getCertamenes(){
     return this.certamenesServicio.getNombre()
+  }
+
+  verBandas(id:string){
+    this.router.navigate(['/listaDeBandas', id])
   }
 }
