@@ -11,10 +11,11 @@ export class TodasLasBandasService {
   localidad:any
   pais:any
 
-  ruta = "http://localhost/certamenes/certamenes.php?opcion=soloBandas"
+  ruta_local="http://localhost/certamenes/certamenes.php"
+  ruta = "api/certamenes.php"
 
   constructor(private http: HttpClient) { 
-    this.http.get(this.ruta).subscribe((datos) => {
+    this.http.get(this.ruta+"?opcion=soloBandas").subscribe((datos) => {
       this.nombre_banda = datos
       this.nombre_director = datos
       this.localidad = datos

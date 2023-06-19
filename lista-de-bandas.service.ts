@@ -1,40 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Banda } from 'src/app/models/banda.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListaDeBandasService {
 
-  nombre_banda:any
-  nombre_director:any
-  numero_musicos:any
-  localidad:any
-  provincia:any
-  codigo_postal:any
-  telefono:any
-  correo_electronico:any
-  clave:any
-  nombre_certamen:any
+  bandas:any
 
-  ruta = "http://localhost/certamenes/certamenes.php?opcion=bandas"
+  ruta_local = "http://localhost/certamenes/certamenes.php"
+  ruta = "api/certamenes.php"
 
-  constructor(private http: HttpClient) {
-    this.http.get(this.ruta).subscribe((datos) => {
-      this.nombre_banda = datos
-      this.nombre_director = datos
-      this.numero_musicos = datos
-      this.localidad = datos
-      this.provincia = datos
-      this.codigo_postal = datos
-      this.telefono = datos
-      this.correo_electronico = datos
-      this.clave = datos
-      this.nombre_certamen = datos
-    })
-   }
+  constructor(private http: HttpClient) {}
 
-   getNombre() {
-    return this.nombre_banda
-   }
+   getNombre(id: string){
+    this.bandas = this.http.get<Banda>(this.ruta+'?opcion=bandas&id='+id)
+    return this.bandas
+  }
 }

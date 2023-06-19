@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegistroService {
 
-  ruta = "http://localhost/certamenes/certamenes.php?opcion=registrar"
+  ruta_local = "http://localhost/certamenes/certamenes.php?opcion=registrar"
+  ruta = "api/certamenes.php?opcion=registrar"
 
   constructor(private http: HttpClient) {}
 
